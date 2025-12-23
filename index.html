@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O Eleito - Notificações</title>
     
-    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+   <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
     <script>
       window.OneSignalDeferred = window.OneSignalDeferred || [];
       OneSignalDeferred.push(async function(OneSignal) {
-  await OneSignal.init({
-    appId: "a4a9fdf3-63ac-43c8-8345-7ce9a718e5aa",
-  });
-});
+        await OneSignal.init({
+          appId: "a4a9fdf3-63ac-43c8-8345-7ce9a718e5aa",
+          // INSTRUÇÕES PARA O ONESIGNAL ENCONTRAR OS ARQUIVOS NA PASTA /AVISOS/
+          serviceWorkerPath: "OneSignalSDKWorker.js",
+          serviceWorkerParam: { scope: "/avisos/" }
+        });
+      });
+    </script>
     </script>
 
     <style>
