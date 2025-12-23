@@ -1,1 +1,0 @@
-     Mac OS X            	   2   ¢      Ô                                      ATTR       Ô   ˜   <                  ˜   <  com.apple.quarantine q/0081;6462764e;Chrome;7AB00224-67C7-4199-9719-C027CCC0E90E 
