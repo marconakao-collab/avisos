@@ -1,43 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Eleito - Notificações</title>
-    
-   <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-    <script>
-      window.OneSignalDeferred = window.OneSignalDeferred || [];
-      OneSignalDeferred.push(async function(OneSignal) {
-        await OneSignal.init({
-          appId: "a4a9fdf3-63ac-43c8-8345-7ce9a718e5aa",
-          // INSTRUÇÕES PARA O ONESIGNAL ENCONTRAR OS ARQUIVOS NA PASTA /AVISOS/
-          serviceWorkerPath: "OneSignalSDKWorker.js",
-          serviceWorkerParam: { scope: "/avisos/" }
-        });
-      });
-    </script>
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O Eleito - Kit Teológico</title>
 
-    <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f0f2f5; }
-        .box { background: white; padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        button { background: #E67E22; color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: bold; cursor: pointer; }
-    </style>
+  <!-- Manifest para PWA -->
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- OneSignal SDK (v16) -->
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function(OneSignal) {
+      await OneSignal.init({
+        appId: "a4a9fdf3-63ac-43c8-8345-7ce9a718e5aa",
+        serviceWorkerPath: "/OneSignalSDKWorker.js",
+        // Escopo padrão: "/" (raiz do subdomínio)
+      });
+    });
+  </script>
+
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f5e8d3; /* Fundo creme alinhado à sua identidade */
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2); /* Sombra dourada suave */
+    }
+    h2 {
+      color: #333;
+      margin-top: 0;
+    }
+    button {
+      background: #d4af37; /* Dourado #d4af37 */
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #c19e2f;
+    }
+  </style>
 </head>
 <body>
-    <div class="box">
-        <h2>📚 Kit Teológico Grátis</h2>
-        <p>Ative as notificações para receber o link.</p>
-        <button id="btn-push">🔔 RECEBER AGORA</button>
-    </div>
+  <div class="box">
+    <h2>📚 Kit Teológico Grátis</h2>
+    <p>Ative as notificações para receber seu link exclusivo.</p>
+    <button id="btn-push">🔔 RECEBER AGORA</button>
+  </div>
 
-    <script>
-        document.getElementById('btn-push').addEventListener('click', function() {
-            OneSignalDeferred.push(function(OneSignal) {
-                OneSignal.Slidedown.promptPush();
-            });
-        });
-    </script>
+  <script>
+    document.getElementById('btn-push').addEventListener('click', function () {
+      OneSignalDeferred.push(function (OneSignal) {
+        OneSignal.Slidedown.promptPush();
+      });
+    });
+  </script>
 </body>
 </html>
