@@ -1,7 +1,18 @@
 {
-  "name": "O Eleito",
-  "short_name": "OEleito",
-  "start_url": "/avisos/",
+  "name": "O Eleito - Kit Teológico",
+  "short_name": "O Eleito",
+  "description": "Receba gratuitamente estudos teológicos e livros cristãos.",
+  "start_url": "/",
   "display": "standalone",
-  "gcm_sender_id": "482941778795"
+  "background_color": "#f5e8d3",
+  "theme_color": "#d4af37",
+  "gcm_sender_id": "482941778795",
+  "icons": [
+    {
+      "src": "https://www.oeleito.com.br/favicon-256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
 }
