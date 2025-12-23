@@ -1,6 +1,7 @@
 {
   "name": "O Eleito",
   "short_name": "OEleito",
-  "start_url": "/",
-  "display": "standalone"
+  "start_url": "/avisos/",
+  "display": "standalone",
+  "gcm_sender_id": "482941778795"
 }
