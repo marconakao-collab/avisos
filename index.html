@@ -9,13 +9,10 @@
     <script>
       window.OneSignalDeferred = window.OneSignalDeferred || [];
       OneSignalDeferred.push(async function(OneSignal) {
-        await OneSignal.init({
-          appId: "a4a9fdf3-63ac-43c8-8345-7ce9a718e5aa",
-          // ESTAS DUAS LINHAS SÃO A CHAVE PARA FUNCIONAR EM SUBPASTAS:
-          serviceWorkerPath: "OneSignalSDKWorker.js",
-          serviceWorkerParam: { scope: "/avisos/" }
-        });
-      });
+  await OneSignal.init({
+    appId: "a4a9fdf3-63ac-43c8-8345-7ce9a718e5aa",
+  });
+});
     </script>
 
     <style>
