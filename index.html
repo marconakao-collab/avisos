@@ -16,18 +16,9 @@
   OneSignalDeferred.push(async function(OneSignal) {
     await OneSignal.init({
       appId: "a4a9fdf3-63ac-43c8-8345-7ce9a718e5aa",
-      // Força a busca na raiz do subdomínio avisos.oeleito.com.br
-      serviceWorkerPath: "OneSignalSDKWorker.js", 
-      serviceWorkerParam: { scope: "/" }
+      // Remova as linhas serviceWorkerPath e serviceWorkerParam
+      // O SDK v16 detecta automaticamente na raiz do subdomínio
     });
-
-    // Diagnóstico automático no console (F12)
-    const status = await OneSignal.getUserId();
-    if (status) {
-      console.log("Sucesso! ID do Usuário:", status);
-    } else {
-      console.log("Ainda não identificado como inscrito.");
-    }
   });
 </script>
 
