@@ -12,13 +12,21 @@
   <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 
   <script>
-    window.OneSignalDeferred = window.OneSignalDeferred || [];
-    OneSignalDeferred.push(async function(OneSignal) {
-      await OneSignal.init({
-        appId: "a4a9fdf3-63ac-43c8-8345-7ce9a718e5aa",
-      });
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "a4a9fdf3-63ac-43c8-8345-7ce9a718e5aa",
     });
-  </script>
+    
+    // Isso vai mostrar um alerta na tela dizendo se você tem um ID ou não
+    const userId = await OneSignal.getUserId();
+    if (userId) {
+       console.log("Inscrito com ID:", userId);
+    } else {
+       console.log("Ainda não inscrito.");
+    }
+  });
+</script>
 
   <style>
     body {
