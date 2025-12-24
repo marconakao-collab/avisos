@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O Eleito - Ativar Notificações</title>
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
     <script>
@@ -11,26 +12,47 @@
           appId: "a4a9fdf3-63ac-43c8-8345-7ce9a718e5aa",
         });
 
-        // Quando o usuário permitir a notificação com sucesso:
-        OneSignal.Notifications.addEventListener("permissionChange", function(permission) {
-          if (permission === 'granted') {
-            // Marca no navegador que ele já é inscrito para o sino sumir no blog principal
+        // Função para marcar inscrito e sair
+        function finalizarEIrParaKit() {
             localStorage.setItem('onesignal-inscrito', 'true');
-            
-            // Opcional: Redirecionar para o Kit após 3 segundos
             setTimeout(function(){
                 window.location.href = "https://www.oeleito.com.br/p/livros.html";
-            }, 3000);
+            }, 1500); // Reduzi para 1.5s para ser mais ágil
+        }
+
+        // 1. Caso o usuário acabe de clicar em PERMITIR
+        OneSignal.Notifications.addEventListener("permissionChange", function(permission) {
+          if (permission === 'granted') {
+              finalizarEIrParaKit();
           }
         });
+
+        // 2. Caso ele já tenha permitido (segurança para não travar a página)
+        if (OneSignal.Notifications.permission) {
+            finalizarEIrParaKit();
+        }
       });
     </script>
 </head>
 <body>
-    <div style="text-align:center; margin-top:50px; font-family: sans-serif;">
+    <div style="text-align:center; margin-top:50px; font-family: sans-serif; padding: 20px;">
         <h1>Ativando seu acesso ao Kit...</h1>
-        <p>Por favor, clique em <b>"Permitir"</b> na janela que aparece no seu navegador.</p>
-        <p><i>Após permitir, você será levado ao material automaticamente.</i></p>
+        <p>Por favor, clique em <b>"Permitir"</b> na janela que aparece.</p>
+        <p><i>Se você já permitiu, aguarde um instante...</i></p>
+        
+        <br><br>
+        <button onclick="window.location.href='https://www.oeleito.com.br/p/livros.html'" 
+                style="display:none; padding: 10px 20px; background: #2c3e50; color: white; border: none; border-radius: 5px; cursor: pointer;" 
+                id="btnManual">
+            Clique aqui se não for redirecionado
+        </button>
     </div>
+
+    <script>
+        // Mostra o botão manual após 5 segundos só por segurança
+        setTimeout(function(){
+            document.getElementById('btnManual').style.display = 'inline-block';
+        }, 5000);
+    </script>
 </body>
 </html>
