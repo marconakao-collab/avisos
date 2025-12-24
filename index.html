@@ -14,15 +14,14 @@
   <script>
   window.OneSignalDeferred = window.OneSignalDeferred || [];
   OneSignalDeferred.push(async function(OneSignal) {
-    // ATIVA O LOG DE DIAGNÓSTICO (Item 5 do seu guia)
-    OneSignal.Debug.setLogLevel('trace'); 
-
     await OneSignal.init({
       appId: "a4a9fdf3-63ac-43c8-8345-7ce9a718e5aa",
-      serviceWorkerPath: "OneSignalSDKWorker.js",
-      serviceWorkerParam: { scope: "/" },
+      autoResubscribe: true, // Força a tentativa de re-inscrição
       allowLocalhostAsSecureOrigin: true
     });
+    
+    // Comando para forçar o OneSignal a acordar
+    await OneSignal.Notifications.requestPermission();
   });
 </script>
 
